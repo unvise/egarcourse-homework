@@ -1,0 +1,4 @@
+datasource:
+    url: jdbc:postgresql://localhost:5432/airlines_db
+    user: postgres
+    password: 12345
