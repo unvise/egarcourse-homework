@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="application.properties"/>
+
+    <bean id="person1-account" class="com.unvise.domain.entity.Account">
+        <constructor-arg name="id" type="java.lang.Integer" value="${application.account.person1.id}"/>
+        <constructor-arg name="balance" type="java.math.BigDecimal" value="${application.account.person1.balance}"/>
+        <constructor-arg name="currency" value="${application.account.person1.currency}"/>
+    </bean>
+
+    <bean id="person1" class="com.unvise.domain.entity.Person">
+        <constructor-arg name="id" type="java.lang.Integer" value="${application.person.1.id}"/>
+        <constructor-arg name="name" value="${application.person.1.name}"/>
+        <constructor-arg name="phone" value="${application.person.1.phone}"/>
+        <constructor-arg name="email" value="${application.person.1.email}"/>
+        <constructor-arg name="login" value="${application.person.1.login}"/>
+        <constructor-arg name="password" value="${application.person.1.password}"/>
+        <constructor-arg ref="person1-account"/>
+    </bean>
+
+    <bean id="person2-account" class="com.unvise.domain.entity.Account">
+        <constructor-arg name="id" type="java.lang.Integer" value="${application.account.person2.id}"/>
+        <constructor-arg name="balance" type="java.math.BigDecimal" value="${application.account.person2.balance}"/>
+        <constructor-arg name="currency" value="${application.account.person2.currency}"/>
+    </bean>
+
+    <bean id="person2" class="com.unvise.domain.entity.Person">
+        <constructor-arg name="id" type="java.lang.Integer" value="${application.person.2.id}"/>
+        <constructor-arg name="name" value="${application.person.2.name}"/>
+        <constructor-arg name="phone" value="${application.person.2.phone}"/>
+        <constructor-arg name="email" value="${application.person.2.email}"/>
+        <constructor-arg name="login" value="${application.person.2.login}"/>
+        <constructor-arg name="password" value="${application.person.2.password}"/>
+        <constructor-arg ref="person2-account"/>
+    </bean>
+
+    <bean id="person1-to-person2-transaction" class="com.unvise.domain.entity.Transaction">
+        <constructor-arg name="fromPerson" ref="person1"/>
+        <constructor-arg name="toPerson" ref="person2"/>
+        <constructor-arg name="currency" value="${person1.to.person2.transaction.currency}"/>
+        <constructor-arg name="amount" type="java.math.BigDecimal" value="${person1.to.person2.transaction.value}"/>
+    </bean>
+
+</beans>
