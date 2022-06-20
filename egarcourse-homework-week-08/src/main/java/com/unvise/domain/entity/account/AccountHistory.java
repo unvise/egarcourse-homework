@@ -46,5 +46,5 @@ public class AccountHistory {
             joinColumns = @JoinColumn(name = "account_history_id"),
             inverseJoinColumns = @JoinColumn(name = "transaction_id")
     )
-    private Transaction transaction;
+    private List<Transaction> transaction;
 }
